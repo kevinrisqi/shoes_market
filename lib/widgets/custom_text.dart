@@ -18,10 +18,15 @@ Widget customText(
   int? maxLines,
   bool? softWrap,
   Locale? locale,
+  Color? color,
 }) {
   return Text(
     text,
-    style: GoogleFonts.poppins(fontSize: fontSize, fontWeight: fontWeight),
+    style: GoogleFonts.poppins(
+      fontSize: fontSize,
+      fontWeight: fontWeight,
+      color: color,
+    ),
     textAlign: textAlign,
     overflow: textOverflow,
     maxLines: maxLines,

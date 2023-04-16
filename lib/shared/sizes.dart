@@ -6,7 +6,7 @@ double defaultScreenHeight = 810.0;
 double screenWidth = defaultScreenWidth;
 double screenHeight = defaultScreenHeight;
 
-double padding = 16;
+double padding = 30;
 
 class Sizes {
   static double s0 = 0.0;

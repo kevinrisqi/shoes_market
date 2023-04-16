@@ -7,7 +7,7 @@ class SplashScreenController extends GetxController {
   void onInit() {
     Future.microtask(() async {
       await Future.delayed(const Duration(seconds: 3));
-      Get.toNamed(RouteName.home);
+      Get.offAllNamed(RouteName.login);
     });
     super.onInit();
   }
