@@ -10,11 +10,18 @@ class LoginController extends GetxController
   TextEditingController password = TextEditingController();
 
   RxBool isLoading = false.obs;
+  RegExp emailRegex =
+      RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$');
+  RegExp passwordRegex = RegExp(r'^(?=.*[A-Z])(?=.*\d).{8,}$');
+
+  var keys = GlobalKey<FormState>();
 
   Future<void> loginAction() async {
-    isLoading.toggle();
-    await Future.delayed(const Duration(seconds: 3));
-    isLoading.toggle();
+    if (keys.currentState!.validate()) {
+      isLoading.toggle();
+      await Future.delayed(const Duration(seconds: 3));
+      isLoading.toggle();
+    }
   }
 
   @override

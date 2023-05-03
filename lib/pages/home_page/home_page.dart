@@ -7,10 +7,12 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: customText('Home Page'),),
+      appBar: AppBar(
+        title: customText('Home Page'),
+      ),
       body: ListView(
         children: [
-          customText('Hello World!')
+          customText('Hello World!'),
         ],
       ),
     );

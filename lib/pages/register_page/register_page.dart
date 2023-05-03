@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shoes_market/pages/register_page/register_controller.dart';
@@ -23,90 +25,24 @@ class RegisterPage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  customText(
-                    'Sign Up',
-                    fontWeight: semiBold,
-                    fontSize: FontSize.s24,
-                    color: Colors.white,
-                  ),
-                  customText(
-                    'Register and Happy Shopping',
-                    color: subtitleTextColor,
-                  ),
+                  header(),
                   SizedBox(
                     height: padding + 30,
                   ),
-                  customText(
-                    'Full Name',
-                    fontSize: FontSize.s16,
-                    fontWeight: medium,
-                    color: Colors.white,
-                  ),
-                  SizedBox(
-                    height: padding / 2.5,
-                  ),
-                  customTextField(
-                    'Your Full Name',
-                    image: iconPerson,
-                    controller: c.fullName,
-                  ),
-                  SizedBox(
-                    height: padding - 10,
-                  ),
-                  customText(
-                    'Username',
-                    fontSize: FontSize.s16,
-                    fontWeight: medium,
-                    color: Colors.white,
-                  ),
-                  SizedBox(
-                    height: padding / 2.5,
-                  ),
-                  customTextField(
-                    'Your Username',
-                    image: iconDot,
-                    controller: c.username,
-                  ),
-                  SizedBox(
-                    height: padding - 10,
-                  ),
-                  customText(
-                    'Email Address',
-                    fontSize: FontSize.s16,
-                    fontWeight: medium,
-                    color: Colors.white,
-                  ),
-                  SizedBox(
-                    height: padding / 2.5,
-                  ),
-                  customTextField(
-                    'Your Email Address',
-                    image: iconEmail,
-                    controller: c.email,
-                  ),
-                  SizedBox(
-                    height: padding - 10,
-                  ),
-                  customText(
-                    'Password',
-                    fontSize: FontSize.s16,
-                    fontWeight: medium,
-                    color: Colors.white,
-                  ),
-                  SizedBox(
-                    height: padding / 2.5,
-                  ),
-                  customTextField('Your Password',
-                      image: iconPassword,
-                      controller: c.password,
-                      isPassword: true),
+                  content(),
                   SizedBox(
                     height: padding,
                   ),
-                  customButton(
-                    'Sign Up',
-                    ontap: () {},
-                  )
+                  Obx(
+                    () => customButton(
+                      'Sign Up',
+                      ontap: () {
+                        // log('Sign Up');
+                        c.handleRegister();
+                      },
+                      isLoading: c.isLoading.value,
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -115,4 +51,98 @@ class RegisterPage extends StatelessWidget {
       ),
     );
   }
+}
+
+Widget header() {
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      customText(
+        'Sign Up',
+        fontWeight: semiBold,
+        fontSize: FontSize.s24,
+        color: Colors.white,
+      ),
+      customText(
+        'Register and Happy Shopping',
+        color: subtitleTextColor,
+      ),
+    ],
+  );
+}
+
+Widget content() {
+  return GetBuilder<RegisterController>(builder: (c) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        customText(
+          'Full Name',
+          fontSize: FontSize.s16,
+          fontWeight: medium,
+          color: Colors.white,
+        ),
+        SizedBox(
+          height: padding / 2.5,
+        ),
+        customTextField(
+          'Your Full Name',
+          image: iconPerson,
+          controller: c.fullName,
+        ),
+        SizedBox(
+          height: padding - 10,
+        ),
+        customText(
+          'Username',
+          fontSize: FontSize.s16,
+          fontWeight: medium,
+          color: Colors.white,
+        ),
+        SizedBox(
+          height: padding / 2.5,
+        ),
+        customTextField(
+          'Your Username',
+          image: iconDot,
+          controller: c.username,
+        ),
+        SizedBox(
+          height: padding - 10,
+        ),
+        customText(
+          'Email Address',
+          fontSize: FontSize.s16,
+          fontWeight: medium,
+          color: Colors.white,
+        ),
+        SizedBox(
+          height: padding / 2.5,
+        ),
+        customTextField(
+          'Your Email Address',
+          image: iconEmail,
+          controller: c.email,
+        ),
+        SizedBox(
+          height: padding - 10,
+        ),
+        customText(
+          'Password',
+          fontSize: FontSize.s16,
+          fontWeight: medium,
+          color: Colors.white,
+        ),
+        SizedBox(
+          height: padding / 2.5,
+        ),
+        customTextField(
+          'Your Password',
+          image: iconPassword,
+          controller: c.password,
+          isPassword: true,
+        ),
+      ],
+    );
+  });
 }
